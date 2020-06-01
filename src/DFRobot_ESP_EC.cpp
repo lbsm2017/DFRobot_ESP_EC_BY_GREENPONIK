@@ -66,8 +66,8 @@ float DFRobot_ESP_EC::readEC(float voltage, float temperature)
 {
     float value = 0, valueTemp = 0;
     this->_rawEC = 1000 * voltage / RES2 / ECREF;
-    Serial.print(F(">>>rawEC: "));
-    Serial.print(this->_rawEC, 4);
+//     Serial.print(F(">>>rawEC: "));
+//     Serial.print(this->_rawEC, 4);
     valueTemp = this->_rawEC * this->_kvalue;
     //automatic shift process
     //First Range:(0,2); Second Range:(2,20)
@@ -83,9 +83,9 @@ float DFRobot_ESP_EC::readEC(float voltage, float temperature)
     value = this->_rawEC * this->_kvalue;                  //calculate the EC value after automatic shift
     value = value / (1.0 + 0.0185 * (temperature - 25.0)); //temperature compensation
     this->_ecvalue = value;                                //store the EC value for Serial CMD calibration
-    Serial.print(F(", ecValue: "));
-    Serial.print(this->_ecvalue, 4);
-    Serial.println(F("<<<"));
+//     Serial.print(F(", ecValue: "));
+//     Serial.print(this->_ecvalue, 4);
+//     Serial.println(F("<<<"));
     return this->_ecvalue;
 }
 
